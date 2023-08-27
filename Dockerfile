@@ -1,2 +1,2 @@
 FROM ghcr.io/vp-en/qflood:nightly
-RUN chgrp -R 0 / && chmod -R g=u /
+RUN chgrp -R 0 / 2>/dev/null && chmod -R g=u / 2>/dev/null
