@@ -9,7 +9,7 @@ RUN mkdir -p /config/qBittorrent/config /downloads/temp \
     && echo "                                " >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "[LegalNotice]" >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "Accepted=true" >> /config/qBittorrent/config/qBittorrent.conf \
-    && chgrp -R 0 /config /downloads /var /usr/bin/start.sh && chmod -R g+rwX /config /downloads /var
+    && chgrp -R 0 /config /downloads /var && chmod -R g+rwX /config /downloads /var
 
 
 CMD (flood --rundir /config/flood --host 0.0.0.0 --port 3000) & qbittorrent-nox --profile=/config --webui-port=8000
