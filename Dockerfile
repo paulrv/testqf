@@ -12,7 +12,7 @@ RUN mkdir -p /config/qBittorrent/config /downloads/temp \
     && chgrp -R 0 /config /downloads /var && chmod -R g+rwX /config /downloads /var
 
 
-CMD ["/bin/bash", "-c", "( flood --rundir /config/flood --host 0.0.0.0 --port 3000 &); (qbittorrent-nox --profile=/config --webui-port=8000 &);"
+CMD (flood --rundir /config/flood --host 0.0.0.0 --port 3000 &); (qbittorrent-nox --profile=/config --webui-port=8000 &)
 
 
 EXPOSE 3000 8000 6881 
