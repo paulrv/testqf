@@ -13,7 +13,7 @@ RUN mkdir -p /config/qBittorrent/config /downloads/temp \
 
 
 
-ENTRYPOINT exec (flood --rundir /config/flood --host 0.0.0.0 --port 3000) & (qbittorrent-nox --profile=/config --webui-port=8000)
+ENTRYPOINT exec flood --rundir /config/flood --host 0.0.0.0 --port 3000 ; qbittorrent-nox --profile=/config --webui-port=8000
 
 EXPOSE 3000 8000 6881 
 EXPOSE 6881/udp
