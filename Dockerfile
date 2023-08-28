@@ -6,7 +6,7 @@ RUN mkdir -p /config/qBittorrent/config /downloads/temp \
     && echo "Session\DefaultSavePath=/downloads" >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "Session\Port=6881"  >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "Session\TempPath=/downloads/temp" >> /config/qBittorrent/config/qBittorrent.conf \
-    && echo " " >> /config/qBittorrent/config/qBittorrent.conf \
+    && echo "                                " >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "[LegalNotice]" >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "Accepted=true" >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "#!/bin/sh" > /usr/bin/start.sh \
