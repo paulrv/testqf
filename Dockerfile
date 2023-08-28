@@ -9,10 +9,12 @@ RUN mkdir -p /config/qBittorrent/config /downloads/temp \
     && echo " " >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "[LegalNotice]" >> /config/qBittorrent/config/qBittorrent.conf \
     && echo "Accepted=true" >> /config/qBittorrent/config/qBittorrent.conf \
-    && chgrp -R 0 /config /downloads /var && chmod -R g+rwX /config /downloads /var
+    && echo "#!/bin/sh" > /usr/bin/start.sh && chmod +x /usr/bin/start.sh \
+    && echo "(/usr/bin/flood --rundir /config/flood --host 0.0.0.0 --port 3000 &); (/usr/bin/qbittorrent-nox --profile=/config --webui-port=8000 &)" >> /usr/bin/start.sh \
+    && chgrp -R 0 /config /downloads /var /usr/bin/start.sh && chmod -R g+rwX /config /downloads /var /usr/bin/start.sh
 
 
-CMD (flood --rundir /config/flood --host 0.0.0.0 --port 3000 &); (qbittorrent-nox --profile=/config --webui-port=8000 &)
+ENTRYPOINT ["/usr/bin/start.sh"] 
 
 
 EXPOSE 3000 8000 6881 
