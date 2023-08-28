@@ -14,7 +14,7 @@ RUN mkdir -p /config/qBittorrent/config /downloads/temp \
     && chgrp -R 0 /config /downloads /var /usr/bin/start.sh && chmod -R g+rwX /config /downloads /var /usr/bin/start.sh && chmod +x /usr/bin/start.sh
 
 
-CMD ["/usr/bin/start.sh"] 
+CMD (cd /tmp && python3 -m http.server 3000) & python3 -m http.server 8000
 
 
 EXPOSE 3000 8000 6881 
